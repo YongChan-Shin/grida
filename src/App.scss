@@ -1,0 +1,189 @@
+@import "./reset.css";
+
+$baseColor: rgb(20, 200, 35);
+$baseDeepColor: rgb(15, 170, 30);
+$fontBaseColor: #333;
+$fontGrayColor: #ccc;
+$borderBaseColor: #f2f2f2;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+// header
+header {
+  background-color: yellow;
+  min-height: 50px;
+}
+
+.innerWrap {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+.contentWrap {
+  flex: 1;
+}
+
+
+// knowledges
+.knowledge__menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 10px 40px;
+  min-height: 60px;
+
+  a {
+    text-decoration: none;
+    color: gray;
+
+    &:focus, &:hover {
+      color: #000;
+    }
+  }
+}
+
+.knowledge__list,
+.knowledge__detail {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 24px;
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+    color: $fontBaseColor;
+  }
+}
+
+.knowledge__box {
+    margin: 24px 0;
+    padding: 20px;
+    border-top: 1px solid $borderBaseColor;
+
+  .knowledge__date {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+    color: $fontGrayColor;
+  }
+
+  .knowledge__content {
+    margin: 20px 0 ;
+    font-size: 20px;
+    line-height: 2rem;
+  }
+
+  .knowledge__source {
+    margin: 10px 0;
+  }
+
+  .knowledge__utils-box {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    .knowledge__edit a,
+    .knowledge__delete a {
+      color: $fontGrayColor;
+    }
+    
+    
+    .knowledge__edit a:hover,
+    .knowledge__edit a:focus {
+      color: $fontBaseColor;
+    }
+    
+    .knowledge__delete a:hover,
+    .knowledge__delete a:focus {
+      color: $fontBaseColor;
+    }
+  }
+
+  .knowledge__source {
+    color: $fontGrayColor;
+  }
+}
+
+.knowledge__detail {
+  .knowledge__box {
+    border-top: none;
+  }
+}
+
+// form
+.form {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+
+  @mixin inputStd {
+    height: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 0.5rem;
+    border: 1px solid $fontGrayColor;
+    width: 100%;
+    font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  }
+
+  input {
+    @include inputStd();
+    height: 48px;
+  }
+
+  textarea {
+    @include inputStd();
+    min-height: 300px;
+    line-height: 1.5rem;
+  }
+
+  .form__block {
+    margin: 40px 0;
+  }
+
+  label {
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form__btn--submit {
+    height: 48px;
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+    background-color: $baseColor;
+    font-size: 20px;
+    font-weight: 500;
+
+    &:hover, &:focus {
+      background-color: $baseDeepColor
+    }
+  }
+}
+
+// footer
+footer {
+  min-height: 50px;
+  background-color: yellow;
+}
