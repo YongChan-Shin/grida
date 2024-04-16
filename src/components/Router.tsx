@@ -7,19 +7,31 @@ import KnowledgeEdit from '../pages/knowledges/edit'
 import LoginPage from '../pages/login'
 import SignupPage from '../pages/signup'
 
-const Router = () => {
+interface RouterProps {
+  isAuthenticated: boolean;
+}
+
+const Router = ({isAuthenticated}: RouterProps) => {
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/knowledges" element={<KnowledgeHome/>} />
-        <Route path="/knowledges/:id" element={<KnowledgeDetail />}/>
-        <Route path="/knowledges/new" element={<KnowledgeLNew />}/>
-        <Route path="/knowledges/edit/:id" element={<KnowledgeEdit />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="*" element={<Navigate replace to="/" />} />
+        {isAuthenticated ? (
+          <>
+            <Route path="/" element={<Home />}/>
+            <Route path="/knowledges" element={<KnowledgeHome/>} />
+            <Route path="/knowledges/:id" element={<KnowledgeDetail />}/>
+            <Route path="/knowledges/new" element={<KnowledgeLNew />}/>
+            <Route path="/knowledges/edit/:id" element={<KnowledgeEdit />} />
+            <Route path="*" element={<Navigate replace to="/" />} />
+          </>
+        ): (
+          <>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="*" element={<LoginPage />} />
+          </>
+        )}
       </Routes>
     </>
   )

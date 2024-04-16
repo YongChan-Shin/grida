@@ -1,7 +1,7 @@
 @import "./reset.css";
 
 $baseColor: rgb(20, 200, 35);
-$baseDeepColor: rgb(15, 170, 30);
+$baseDeepColor: rgb(14, 177, 28);
 $fontBaseColor: #333;
 $fontGrayColor: #ccc;
 $borderBaseColor: #f2f2f2;
@@ -143,6 +143,7 @@ header {
     border: 1px solid $fontGrayColor;
     width: 100%;
     font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+    outline: none;
   }
 
   input {
@@ -168,7 +169,7 @@ header {
   }
 
   .form__btn--submit {
-    height: 48px;
+    height: 60px;
     padding: 10px;
     cursor: pointer;
     color: #fff;
@@ -179,7 +180,56 @@ header {
     &:hover, &:focus {
       background-color: $baseDeepColor
     }
+
+    &:active {
+      transform: scale(0.995);
+    }
   }
+
+  .form__error {
+    color: red;
+  }
+}
+
+// login form
+.form__title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.form__link {
+  margin-left: 10px;
+  color: $fontBaseColor;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+  
+}
+
+// loader
+.loader {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 5px solid $baseColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  z-index: 9;
+  animation: loader 0.8s linear infinite;
+}
+
+@keyframes loader {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 // footer

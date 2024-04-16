@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import KnowledgeDetail from "../../components/KnowledgeDetail";
+import KnowledgeDetail from "../../components/knowledges/KnowledgeDetail";
 import Footer from "../../components/Footer";
 
 const KnowledgeDetailPage = () => {
