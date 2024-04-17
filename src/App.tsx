@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import './App.scss'
 import Router from './components/Router'
-import { app, db } from './firebase'
+import { app } from './firebase'
 import { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,6 @@ import Loader from './components/Loader';
 import AuthContext from './context/AuthContext';
 
 function App() {
-  console.log(db)
   const auth = getAuth(app);
 
   const [init, setInit] = useState<boolean>(false);

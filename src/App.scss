@@ -102,8 +102,9 @@ header {
     gap: 10px;
 
     .knowledge__edit a,
-    .knowledge__delete a {
+    .knowledge__delete {
       color: $fontGrayColor;
+      cursor: pointer;
     }
     
     
@@ -112,8 +113,8 @@ header {
       color: $fontBaseColor;
     }
     
-    .knowledge__delete a:hover,
-    .knowledge__delete a:focus {
+    .knowledge__delete:hover,
+    .knowledge__delete:focus {
       color: $fontBaseColor;
     }
   }
@@ -127,6 +128,18 @@ header {
   .knowledge__box {
     border-top: none;
   }
+}
+
+.knowledge__content-pre-wrap {
+  white-space: pre-wrap;
+}
+
+.knowledge__no-post {
+  padding: 24px;
+  text-align: center;
+  color: $fontGrayColor;
+  border: 1px solid $fontGrayColor;
+  border-radius: 20px;
 }
 
 // form

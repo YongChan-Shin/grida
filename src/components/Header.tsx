@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 const Header = () => {
 
   const { user } = useContext(AuthContext);
-  console.log(user);
   
   const onSignout = async () => {
 
