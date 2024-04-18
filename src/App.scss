@@ -6,6 +6,17 @@ $fontBaseColor: #333;
 $fontGrayColor: #ccc;
 $borderBaseColor: #f2f2f2;
 
+@mixin inputStd {
+  height: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 0.5rem;
+  border: 1px solid $fontGrayColor;
+  width: 100%;
+  font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+  outline: none;
+}
+
 *,
 *::before,
 *::after {
@@ -14,6 +25,10 @@ $borderBaseColor: #f2f2f2;
 
 body {
   font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
+
+textarea {
+  resize: none;
 }
 
 .container {
@@ -39,7 +54,6 @@ header {
   flex: 1;
 }
 
-
 // knowledges
 .knowledge__menu {
   display: flex;
@@ -54,7 +68,8 @@ header {
     text-decoration: none;
     color: gray;
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       color: #000;
     }
   }
@@ -75,9 +90,9 @@ header {
 }
 
 .knowledge__box {
-    margin: 24px 0;
-    padding: 20px;
-    border-top: 1px solid $borderBaseColor;
+  margin: 24px 0;
+  padding: 20px;
+  border-top: 1px solid $borderBaseColor;
 
   .knowledge__date {
     display: flex;
@@ -87,7 +102,7 @@ header {
   }
 
   .knowledge__content {
-    margin: 20px 0 ;
+    margin: 20px 0;
     font-size: 20px;
     line-height: 2rem;
   }
@@ -106,13 +121,12 @@ header {
       color: $fontGrayColor;
       cursor: pointer;
     }
-    
-    
+
     .knowledge__edit a:hover,
     .knowledge__edit a:focus {
       color: $fontBaseColor;
     }
-    
+
     .knowledge__delete:hover,
     .knowledge__delete:focus {
       color: $fontBaseColor;
@@ -148,17 +162,6 @@ header {
   margin: 0 auto;
   padding: 20px;
 
-  @mixin inputStd {
-    height: 20px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 0.5rem;
-    border: 1px solid $fontGrayColor;
-    width: 100%;
-    font-family: "Noto Sans KR", "Noto Sans", sans-serif;
-    outline: none;
-  }
-
   input {
     @include inputStd();
     height: 48px;
@@ -181,7 +184,7 @@ header {
     margin-bottom: 15px;
   }
 
-  .form__btn--submit {
+  .form__btn-submit {
     height: 60px;
     padding: 10px;
     cursor: pointer;
@@ -190,8 +193,9 @@ header {
     font-size: 20px;
     font-weight: 500;
 
-    &:hover, &:focus {
-      background-color: $baseDeepColor
+    &:hover,
+    &:focus {
+      background-color: $baseDeepColor;
     }
 
     &:active {
@@ -220,7 +224,6 @@ header {
   &:hover {
     text-decoration: underline;
   }
-  
 }
 
 // loader
@@ -241,8 +244,91 @@ header {
 }
 
 @keyframes loader {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// comments
+.comments {
+  width: 100%;
+
+  .comments__form {
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      @include inputStd();
+      min-height: 80px;
+      line-height: 1.5rem;
+    }
+
+    .form__btn-submit {
+      width: 100px;
+      height: 36px;
+      cursor: pointer;
+      font-weight: 600;
+      background-color: $baseColor;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+
+      &:hover,
+      &:focus {
+        background-color: $baseDeepColor;
+        outline: none;
+      }
+    }
+  }
+
+  .form__block-reverse {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .comments__list {
+    margin-top: 40px;
+    margin-bottom: 100px;
+  }
+
+  .comment__box {
+    padding: 12px 0px;
+    border-bottom: 1px solid $borderBaseColor;
+  }
+
+  .comment__profile-box {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .comment__email {
+    font-weight: 500;
+  }
+
+  .comment__date {
+    color: $fontGrayColor;
+  }
+
+  .comment__delete {
+    color: $fontGrayColor;
+    cursor: pointer;
+
+    &:hover, &:focus {
+      color: $fontBaseColor;
+    }
+  }
+
+  .comment__text {
+    padding-top: 4px;
+  }
 }
 
 // footer

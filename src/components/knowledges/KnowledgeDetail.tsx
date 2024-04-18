@@ -5,6 +5,7 @@ import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import Loader from "../Loader";
 import { toast } from "react-toastify";
+import Comments from "../Comments";
 
 const KnowledgeDetail = () => {
   
@@ -37,25 +38,28 @@ const KnowledgeDetail = () => {
   return (
     <div className="knowledge__detail">
       {post ? (
-        <div className="knowledge__box">
-          <div className="knowledge__date">
-            {post?.createdAt}
-          </div>
-          <div className="knowledge__content knowledge__content-pre-wrap">
-            {post?.content}
-          </div>
-          <div className="knowledge__source">
-            {post?.source}
-          </div>
-          <div className="knowledge__utils-box">
-            <div className="knowledge__edit">
-              <Link to={`/knowledges/edit/${post?.id}`}>수정</Link>
+        <>
+          <div className="knowledge__box">
+            <div className="knowledge__date">
+              {post?.createdAt}
             </div>
-            <div className="knowledge__delete" role="presentation" onClick={handleDelete}>
-              삭제
+            <div className="knowledge__content knowledge__content-pre-wrap">
+              {post?.content}
+            </div>
+            <div className="knowledge__source">
+              {post?.source}
+            </div>
+            <div className="knowledge__utils-box">
+              <div className="knowledge__edit">
+                <Link to={`/knowledges/edit/${post?.id}`}>수정</Link>
+              </div>
+              <div className="knowledge__delete" role="presentation" onClick={handleDelete}>
+                삭제
+              </div>
             </div>
           </div>
-        </div>
+          <Comments post={post} getPost={getPost} />
+        </>
       ) : <Loader />}
    </div>
   );

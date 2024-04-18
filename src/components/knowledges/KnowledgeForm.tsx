@@ -100,7 +100,7 @@ const KnowledgeForm = () => {
         <input type="text" name="source" id="source" onChange={onChange} value={source} required />
       </div>
       <div className="form__block">
-        <input type="submit" value={post ? "수정" : "작성"} className="form__btn--submit" />
+        <input type="submit" value={post ? "수정" : "작성"} className="form__btn-submit" />
       </div>
     </form>
   );

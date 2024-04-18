@@ -11,7 +11,15 @@ export interface PostProps {
   source: string,
   createdAt: string,
   updatedAt: string,
-  uid: string
+  uid: string,
+  comments?: CommentsInterface[]
+}
+
+export interface CommentsInterface {
+  content: string;
+  uid: string;
+  createdAt: string;
+  email: string;
 }
 
 const KnowledgeList = () => {

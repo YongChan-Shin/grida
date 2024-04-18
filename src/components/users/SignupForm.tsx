@@ -91,7 +91,7 @@ const SignupForm = () => {
         <Link to="/login" className="form__link">로그인하기</Link>
       </div>
       <div className="form__block">
-        <input type="submit" value="회원가입" className="form__btn--submit" disabled={error?.length > 0} />
+        <input type="submit" value="회원가입" className="form__btn-submit" disabled={error?.length > 0} />
       </div>
     </form>
   );
