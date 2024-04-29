@@ -31,7 +31,7 @@ const EducationForm = () => {
   useEffect(() => {
     if (post) {
       setContent(post?.content);
-      setSource(post?.source);
+      setSource(post?.source as string);
     }
   }, [post])
 
@@ -41,7 +41,7 @@ const EducationForm = () => {
     } = e;
 
     if (name === "content") {
-      setContent(value)
+      setContent(value);
     }
 
     if (name === "source") {
@@ -60,10 +60,15 @@ const EducationForm = () => {
           content: content,
           source: source,
           updatedAt: new Date()?.toLocaleDateString("ko", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            weekday: "short",
             hour: "2-digit",
             minute: "2-digit",
-            second: "2-digit"
-          }),          
+            second: "2-digit",
+          }),
+          timeStamp: new Date().getTime(),
         });
         toast.success("게시글을 수정했습니다.");
         navigate(`/education/${post?.id}`);
@@ -73,10 +78,15 @@ const EducationForm = () => {
           content: content,
           source: source,
           createdAt: new Date()?.toLocaleDateString("ko", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            weekday: "short",
             hour: "2-digit",
             minute: "2-digit",
-            second: "2-digit"
+            second: "2-digit",
           }),
+          timeStamp: new Date().getTime(),
           email: user?.email,
           uid: user?.uid
         });

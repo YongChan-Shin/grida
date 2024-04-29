@@ -52,11 +52,13 @@ const CultureDetail = () => {
             <div className="category__date">
               {post?.createdAt}
             </div>
-            <div className="category__culture__date">
-              {post?.date}
-            </div>
-            <div className="category__culture__content">
-              {post?.content}
+            <div className="category__culture__wrap">
+              <div className="category__culture__date">
+                {post?.displayDate}
+              </div>
+              <div className="category__culture__content">
+                {post?.content}
+              </div>
             </div>
             {post?.imageUrl && (
               <div className="image-attatchment">

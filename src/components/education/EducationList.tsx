@@ -12,6 +12,7 @@ export interface PostProps {
   email: string,
   createdAt: string,
   updatedAt: string,
+  timeStamp: number,
   uid: string,
   comments?: CommentsInterface[]
 }
@@ -32,7 +33,7 @@ const EducationList = () => {
     
     // 게시글 작성시간순 정렬 쿼리 적용
     const postsRef = collection(db, "education_posts");
-    const postsQuery = query(postsRef, orderBy("createdAt", "desc"));
+    const postsQuery = query(postsRef, orderBy("timeStamp", "desc"));
     const datas = await getDocs(postsQuery);
     
     datas?.forEach((doc) => {
@@ -69,6 +70,11 @@ const EducationList = () => {
               <div className="category__source">
                 {post?.source}
               </div>
+              {post?.comments && post?.comments.length > 0 && (
+                <div className="category__comment">
+                  {`(댓글 : ${post.comments.length}개)`}
+              </div>
+              )}              
             </Link>
               <div className="category__utils-box">
                 <div className="category__edit">

@@ -10,7 +10,7 @@ const CultureNewPage = () => {
       <div className="contentWrap">
         <div className="innerWrap">
           <div className="category__menu">
-            <Link to="/education/">목록</Link>
+            <Link to="/culture/">목록</Link>
           </div>
           <CultureForm />
         </div>

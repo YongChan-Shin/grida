@@ -13,6 +13,7 @@ const CultureForm = () => {
   const [post, setPost] = useState<PostProps | null>(null);
   const [content, setContent] = useState<string>("");
   const [date, setDate] = useState<string>("");
+  const [displayDate, setDisplayDate] = useState<string>("");
   const [imageFile, setImageFile] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const { user } = useContext(AuthContext);
@@ -51,6 +52,7 @@ const CultureForm = () => {
     if (post) {
       setContent(post?.content);
       setDate(post?.date);
+      setDisplayDate(post?.displayDate);
       setImageFile(post?.imageUrl as string)
     }
   }, [post])
@@ -61,7 +63,39 @@ const CultureForm = () => {
     } = e;
 
     if (name === "date") {
-      setDate(value)
+      setDate(value);
+      // 요일 추출
+      const timeDataArr = value.split("-");
+      const convertedDate = new Date(Number(timeDataArr[0]), Number(timeDataArr[1]) - 1, Number(timeDataArr[2]));
+      let getDayValue = "";
+
+      console.log(timeDataArr);
+      console.log(convertedDate);
+      console.log(convertedDate.getDay());
+      switch (convertedDate.getDay()) {
+        case 0:
+          getDayValue = "일";
+          break;
+        case 1:
+          getDayValue = "월";
+          break;
+        case 2:
+          getDayValue = "화";
+          break;
+        case 3:
+          getDayValue = "수";
+          break;
+        case 4:
+          getDayValue = "목";
+          break;
+        case 5:
+          getDayValue = "금";
+          break;
+        case 6:
+          getDayValue = "토";
+          break;
+      }
+      setDisplayDate(`${convertedDate.getFullYear()}-${convertedDate.getMonth() >= 10 ? convertedDate.getMonth() + 1 : "0" + String(convertedDate.getMonth() + 1)}-${convertedDate.getDate() >= 10 ? convertedDate.getDate() : "0" + String(convertedDate.getDate())}(${getDayValue})`);
     }
 
     if (name === "content") {
@@ -97,13 +131,19 @@ const CultureForm = () => {
         const docRef = doc(db, "culture_posts", post?.id);
         await updateDoc(docRef, {
           date: date,
+          displayDate: displayDate,
           content: content,
           imageUrl: imageUrl,
           updatedAt: new Date()?.toLocaleDateString("ko", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            weekday: "short",
             hour: "2-digit",
             minute: "2-digit",
-            second: "2-digit"
-          }),          
+            second: "2-digit",
+          }),
+          timeStamp: new Date().getTime(),
         });
         toast.success("게시글을 수정했습니다.");
         navigate(`/culture/${post?.id}`);
@@ -119,13 +159,19 @@ const CultureForm = () => {
         // 업로드 된 이미지의 다운로드 url 업데이트
         await addDoc(collection(db, "culture_posts"), {
           date: date,
+          displayDate: displayDate,
           content: content,
           imageUrl: imageUrl,
           createdAt: new Date()?.toLocaleDateString("ko", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            weekday: "short",
             hour: "2-digit",
             minute: "2-digit",
-            second: "2-digit"
+            second: "2-digit",
           }),
+          timeStamp: new Date().getTime(),
           email: user?.email,
           uid: user?.uid
         });

@@ -8,11 +8,13 @@ import { deleteObject, ref } from "firebase/storage";
 export interface PostProps {
   id?: string,
   date: string,
+  displayDate: string,
   imageUrl?: string;
   content: string,
   email: string,
   createdAt: string,
   updatedAt: string,
+  timeStamp: number,
   uid: string,
   comments?: CommentsInterface[]
 }
@@ -33,7 +35,7 @@ const CultureList = () => {
     
     // 게시글 작성시간순 정렬 쿼리 적용
     const postsRef = collection(db, "culture_posts");
-    const postsQuery = query(postsRef, orderBy("createdAt", "desc"));
+    const postsQuery = query(postsRef, orderBy("timeStamp", "desc"));
     const datas = await getDocs(postsQuery);
     
     datas?.forEach((doc) => {
@@ -73,15 +75,22 @@ const CultureList = () => {
               <div className="category__date">
                 {post?.createdAt}
               </div>
-              <div className="category__culture__date">
-                {post?.date}
-              </div>
-              <div className="category__culture__content">
-                {post?.content}
+              <div className="category__culture__wrap">
+                <div className="category__culture__date">
+                  {post?.displayDate}
+                </div>
+                <div className="category__culture__content">
+                  {post?.content}
+                </div>
               </div>
               <div className="category__culture__attatchment">
                 <img src={post.imageUrl} alt="attatchment" />
               </div>
+              {post?.comments && post?.comments.length > 0 && (
+                <div className="category__comment">
+                  {`(댓글 : ${post.comments.length}개)`}
+              </div>
+              )}
             </Link>
               <div className="category__utils-box">
                 <div className="category__edit">

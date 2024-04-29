@@ -10,7 +10,7 @@ const GrowthNewPage = () => {
       <div className="contentWrap">
         <div className="innerWrap">
           <div className="category__menu">
-            <Link to="/education/">목록</Link>
+            <Link to="/growth/">목록</Link>
           </div>
           <GrowthForm/>
         </div>

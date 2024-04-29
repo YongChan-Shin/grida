@@ -204,24 +204,34 @@ header {
     margin: 10px 0;
   }
 
+  .category__comment {
+    color: $baseColor;
+  }
+
+  .category__culture__wrap {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
   .category__culture__date {
-    margin: 20px 0;
-    font-size: 20px;
+    margin: 20px 20px 20px 0;
     line-height: 2rem;
     color: $fontBaseColor;
   }
 
   .category__culture__content {
     color: $fontBaseColor;
-    margin: 10px 0;
-    font-size: 20px;
   }
 
   .category__culture__attatchment img {
     width: 70%;
     max-height: 400px;
     object-fit: cover;
-    padding: 20px;    
+    padding: 20px;
+    margin-bottom: 20px;
   }
 
   .category__utils-box {
@@ -398,6 +408,7 @@ header {
   .comments__form {
     label {
       font-weight: 600;
+      font-size: 18px;
       display: block;
       margin-bottom: 10px;
     }
@@ -406,6 +417,10 @@ header {
       @include inputStd();
       min-height: 80px;
       line-height: 1.5rem;
+
+      &:focus {
+        border: 1px solid $baseColor;
+      }
     }
 
     .form__btn-submit {
@@ -435,6 +450,7 @@ header {
   .comments__list {
     margin-top: 40px;
     margin-bottom: 100px;
+    white-space: pre-wrap;
   }
 
   .comment__box {
