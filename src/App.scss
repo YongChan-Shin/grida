@@ -2,6 +2,7 @@
 
 $baseColor: rgb(20, 200, 35);
 $baseDeepColor: rgb(14, 177, 28);
+$baseLightColor: rgba(184, 255, 190, 0.253);
 $fontBaseColor: #333;
 $fontGrayColor: #ccc;
 $borderBaseColor: #f2f2f2;
@@ -31,6 +32,17 @@ textarea {
   resize: none;
 }
 
+a {
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: $fontBaseColor;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -39,47 +51,128 @@ textarea {
 
 // header
 header {
-  background-color: yellow;
-  min-height: 50px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 .innerWrap {
   width: 90%;
   max-width: 1300px;
   margin: 0 auto;
-  border: 1px solid #000;
 }
 
 .contentWrap {
   flex: 1;
 }
 
-// knowledges
-.knowledge__menu {
+.header__box {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: 10px;
-  margin-top: 30px;
-  padding: 10px 40px;
-  min-height: 60px;
 
-  a {
-    text-decoration: none;
-    color: gray;
+  .logo a {
+    font-family: "Oswald", "Noto Sans KR", "Noto Sans", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: $baseColor;
+    margin-right: 60px;
+  }
 
-    &:focus,
-    &:hover {
-      color: #000;
+  nav {
+    display: flex;
+    flex: 1;
+
+    ul {
+      display: flex;
+
+      li {
+        min-width: 90px;
+        margin: 0 20px;
+        font-size: 22px;
+        color: $fontBaseColor;
+        font-weight: 600;
+        
+        a {
+          display: block;
+          border-radius: 10px;
+          padding: 8px 20px;
+          &:hover,
+          &:focus {
+            background-color: $baseLightColor;
+          }
+          &:active {
+            transform: scale(0.95);
+            color: $fontBaseColor;
+          }
+        }
+      }
+    }
+  }
+
+  .logout__box {
+    display: flex;
+
+    .logout__info {
+      min-width: 230px;
+      margin-right: 20px;
+      color: $fontGrayColor;
+    }
+
+    .logout-btn {
+      margin-right: 30px;
+      color: $fontGrayColor;
+      min-width: 80px;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        cursor: pointer;
+        color: $fontBaseColor;
+      }
     }
   }
 }
 
-.knowledge__list,
-.knowledge__detail {
+// 카테고리별 공통 디자인 적용
+.category__title {
+  color: $baseColor;
+  font-size: 40px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.category__menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-right: 100px;
+  padding: 10px 40px;
+  min-height: 60px;
+
+  a {
+    background-color: $baseColor;
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+
+    &:focus,
+    &:hover {
+      background-color: $baseDeepColor;
+    }
+  }
+}
+
+.category__list,
+.category__detail {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
+  margin:  auto;
+  padding: 020px;
   line-height: 24px;
   text-decoration: none;
 
@@ -89,66 +182,105 @@ header {
   }
 }
 
-.knowledge__box {
+.category__box {
   margin: 24px 0;
   padding: 20px;
   border-top: 1px solid $borderBaseColor;
 
-  .knowledge__date {
+  .category__date {
     display: flex;
     justify-content: flex-end;
     margin: 10px 0;
     color: $fontGrayColor;
   }
 
-  .knowledge__content {
+  .category__content {
     margin: 20px 0;
     font-size: 20px;
     line-height: 2rem;
   }
 
-  .knowledge__source {
+  .category__source {
     margin: 10px 0;
   }
 
-  .knowledge__utils-box {
+  .category__culture__date {
+    margin: 20px 0;
+    font-size: 20px;
+    line-height: 2rem;
+    color: $fontBaseColor;
+  }
+
+  .category__culture__content {
+    color: $fontBaseColor;
+    margin: 10px 0;
+    font-size: 20px;
+  }
+
+  .category__culture__attatchment img {
+    width: 70%;
+    max-height: 400px;
+    object-fit: cover;
+    padding: 20px;    
+  }
+
+  .category__utils-box {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
 
-    .knowledge__edit a,
-    .knowledge__delete {
-      color: $fontGrayColor;
+    .category__edit a,
+    .category__delete {
+      display: inline-block;
+      padding: 8px;
+      border-radius: 10px;
+      color: #fff;
       cursor: pointer;
     }
 
-    .knowledge__edit a:hover,
-    .knowledge__edit a:focus {
-      color: $fontBaseColor;
+    .category__edit a {
+      background-color: rgb(100, 167, 255);
     }
 
-    .knowledge__delete:hover,
-    .knowledge__delete:focus {
-      color: $fontBaseColor;
+    .category__delete {
+      background-color: rgb(241, 79, 79);
+    }
+
+    .category__edit a:hover,
+    .category__edit a:focus {
+      background-color: rgb(29, 126, 253);
+    }
+
+    .category__delete:hover,
+    .category__delete:focus {
+      background-color: red;
     }
   }
 
-  .knowledge__source {
+  .category__source {
     color: $fontGrayColor;
   }
 }
 
-.knowledge__detail {
-  .knowledge__box {
+.category__detail {
+  .category__box {
     border-top: none;
+  }
+
+  .image-attatchment img {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    padding: 20px;
   }
 }
 
-.knowledge__content-pre-wrap {
+.category__content-pre-wrap {
   white-space: pre-wrap;
 }
 
-.knowledge__no-post {
+.category__no-post {
+  margin-top: 20px;
   padding: 24px;
   text-align: center;
   color: $fontGrayColor;
@@ -184,6 +316,12 @@ header {
     margin-bottom: 15px;
   }
 
+  .post-form__attatchment img {
+    width: 100%;
+    object-fit: cover;
+    padding: 20px;
+  }
+
   .form__btn-submit {
     height: 60px;
     padding: 10px;
@@ -206,6 +344,7 @@ header {
   .form__error {
     color: red;
   }
+  
 }
 
 // login form
@@ -321,7 +460,8 @@ header {
     color: $fontGrayColor;
     cursor: pointer;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: $fontBaseColor;
     }
   }
@@ -334,5 +474,5 @@ header {
 // footer
 footer {
   min-height: 50px;
-  background-color: yellow;
+  background-color: $baseColor;
 }

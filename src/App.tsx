@@ -17,7 +17,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!auth?.currentUser);
   // auth의 currentUser가 있으면 authenticated로 변경
 
-  console.log(isAuthenticated);
+  console.log("isAuthenticated :", isAuthenticated);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {

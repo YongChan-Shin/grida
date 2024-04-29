@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CommentsInterface, PostProps } from "./knowledges/KnowledgeList";
+import { CommentsInterface, PostProps } from "./education/EducationList";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import AuthContext from "../context/AuthContext";
@@ -7,10 +7,13 @@ import { toast } from "react-toastify";
 
 interface CommentProps {
   post: PostProps;
+  category: string,
   getPost: (id: string) => Promise<void>;
 }
 
-const Comments = ({ post, getPost }: CommentProps) => {
+const Comments = ({ post, category, getPost }: CommentProps) => {
+
+  console.log(category);
 
   const [comment, setComment] = useState<string>("");
   const { user } = useContext(AuthContext);
@@ -30,7 +33,8 @@ const Comments = ({ post, getPost }: CommentProps) => {
 
     try {
       if (post && post.id) {
-        const postRef = doc(db, "knowledges_posts", post.id);
+        // const postRef = doc(db, "education_posts", post.id);
+        const postRef = doc(db, category, post.id);
         if (user?.uid) {
           const commentObj = {
             content: comment,
@@ -66,7 +70,8 @@ const Comments = ({ post, getPost }: CommentProps) => {
   const handleDeleteComment = async (data: CommentsInterface) => {
     const confirm = window.confirm("해당 댓글을 삭제하시겠습니까?");
     if (confirm && post.id) {
-      const postRef = doc(db, "knowledges_posts", post.id);
+      const postRef = doc(db, category, post.id);
+      // const postRef = doc(db, "education_posts", post.id);
       await updateDoc(postRef, {
         comments: arrayRemove(data)
       });

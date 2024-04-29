@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import KnowledgeForm from "../../components/knowledges/KnowledgeForm";
 import Footer from "../../components/Footer";
+import CultureForm from "../../components/culture/CultureForm";
 
-const KnowledgeEditPage = () => {
+const CultureNewPage = () => {
   return (
     <div className="container">
       <Header />
       <div className="contentWrap">
         <div className="innerWrap">
-          <div className="knowledge__menu">
-            <Link to="/knowledges/">목록</Link>
+          <div className="category__menu">
+            <Link to="/education/">목록</Link>
           </div>
-          <KnowledgeForm />
+          <CultureForm />
         </div>
       </div>
       <Footer />
@@ -20,4 +20,4 @@ const KnowledgeEditPage = () => {
   );
 }
 
-export default KnowledgeEditPage;
+export default CultureNewPage;

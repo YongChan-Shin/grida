@@ -4,9 +4,9 @@ import { db } from "../../firebase";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { PostProps } from "./KnowledgeList";
+import { PostProps } from "./EducationList";
 
-const KnowledgeForm = () => {
+const EducationForm = () => {
 
   const [post, setPost] = useState<PostProps | null>(null);
   const [content, setContent] = useState<string>("");
@@ -17,7 +17,7 @@ const KnowledgeForm = () => {
 
   const getPost = async (id: string) => {
     if (id) {
-      const docRef = doc(db, "knowledges_posts", id);
+      const docRef = doc(db, "education_posts", id);
       const docSnap = await getDoc(docRef);
 
       setPost({ ...docSnap.data() as PostProps, id: docSnap?.id });
@@ -55,7 +55,7 @@ const KnowledgeForm = () => {
     try {
       if (post && post.id) {
         // 만약 post 데이터가 있다면, firestore로 데이터 수정
-        const docRef = doc(db, "knowledges_posts", post?.id);
+        const docRef = doc(db, "education_posts", post?.id);
         await updateDoc(docRef, {
           content: content,
           source: source,
@@ -66,10 +66,10 @@ const KnowledgeForm = () => {
           }),          
         });
         toast.success("게시글을 수정했습니다.");
-        navigate(`/knowledges/${post?.id}`);
+        navigate(`/education/${post?.id}`);
       } else {
         //  firestore로 데이터 생성
-        await addDoc(collection(db, "knowledges_posts"), {
+        await addDoc(collection(db, "education_posts"), {
           content: content,
           source: source,
           createdAt: new Date()?.toLocaleDateString("ko", {
@@ -81,7 +81,7 @@ const KnowledgeForm = () => {
           uid: user?.uid
         });
         toast.success("게시글을 작성했습니다.");
-        navigate("/knowledges");
+        navigate("/education");
       }
     } catch (error: any) {
       console.log(error);
@@ -106,4 +106,4 @@ const KnowledgeForm = () => {
   );
 }
 
-export default KnowledgeForm;
+export default EducationForm;

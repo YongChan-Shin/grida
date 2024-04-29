@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import KnowledgeList from "../../components/knowledges/KnowledgeList";
+import GrowthList from "../../components/growth/GrowthList";
 
-const KnowledgeHome = () => {
+const GrowthHome = () => {
   return (
     <div className="container">
       <Header />
       <div className="contentWrap">
         <div className="innerWrap">
-          <div className="knowledge__menu">
-            <Link to="/knowledges/">목록</Link>
-            <Link to="/knowledges/new">작성</Link>
+          <div className="category__title">성장(Growth)</div>
+          <div className="category__menu">
+            <Link to="/growth/new">작성</Link>
           </div>
-          <KnowledgeList />
+          <GrowthList />
         </div>
       </div>
       <Footer />
@@ -21,4 +21,4 @@ const KnowledgeHome = () => {
   );
 }
 
-export default KnowledgeHome;
+export default GrowthHome;

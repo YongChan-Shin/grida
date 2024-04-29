@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import KnowledgeDetail from "../../components/knowledges/KnowledgeDetail";
+import EducationDetail from "../../components/education/EducationDetail";
 import Footer from "../../components/Footer";
 
-const KnowledgeDetailPage = () => {
+const EducationDetailPage = () => {
   return (
     <div className="container">
       <Header />
       <div className="contentWrap">
         <div className="innerWrap">
-          <div className="knowledge__menu">
-            <Link to="/knowledges/">목록</Link>
+          <div className="category__menu">
+            <Link to="/education/">목록</Link>
           </div>
-          <KnowledgeDetail />
+          <EducationDetail />
         </div>
       </div>
       <Footer />
@@ -20,4 +20,4 @@ const KnowledgeDetailPage = () => {
   );
 }
 
-export default KnowledgeDetailPage;
+export default EducationDetailPage;
