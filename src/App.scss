@@ -18,6 +18,12 @@ $borderBaseColor: #f2f2f2;
   outline: none;
 }
 
+@font-face {
+  font-family: "Paperlogy-8ExtraBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2")
+    format("woff2");
+}
+
 *,
 *::before,
 *::after {
@@ -33,6 +39,7 @@ textarea {
 }
 
 a {
+  color: $fontBaseColor;
   text-decoration: none;
 
   &:hover,
@@ -89,16 +96,17 @@ header {
         min-width: 90px;
         margin: 0 20px;
         font-size: 22px;
+        font-family: "Paperlogy-8ExtraBold";
         color: $fontBaseColor;
         font-weight: 600;
-        
+
         a {
           display: block;
           border-radius: 10px;
-          padding: 8px 20px;
-          &:hover,
-          &:focus {
-            background-color: $baseLightColor;
+          padding: 6px 20px 8px;
+          text-align: center;
+          &:hover {
+            color: $baseColor;
           }
           &:active {
             transform: scale(0.95);
@@ -171,7 +179,7 @@ header {
 .category__list,
 .category__detail {
   max-width: 1000px;
-  margin:  auto;
+  margin: auto;
   padding: 020px;
   line-height: 24px;
   text-decoration: none;
@@ -195,9 +203,13 @@ header {
   }
 
   .category__content {
-    margin: 20px 0;
+    margin: 40px 0;
     font-size: 20px;
     line-height: 2rem;
+  }
+
+  .category__content.growth__content {
+    white-space: pre-wrap;
   }
 
   .category__source {
@@ -211,19 +223,18 @@ header {
   .category__culture__wrap {
     display: flex;
     align-items: center;
-    font-weight: 500;
     font-size: 22px;
     margin-bottom: 10px;
+    color: $fontBaseColor;
   }
 
   .category__culture__date {
-    margin: 20px 20px 20px 0;
+    margin: 20px 10px 20px 0;
     line-height: 2rem;
-    color: $fontBaseColor;
   }
 
   .category__culture__content {
-    color: $fontBaseColor;
+    font-weight: 600;
   }
 
   .category__culture__attatchment img {
@@ -312,7 +323,7 @@ header {
   textarea {
     @include inputStd();
     min-height: 300px;
-    line-height: 1.5rem;
+    line-height: 2rem;
   }
 
   .form__block {
@@ -354,7 +365,6 @@ header {
   .form__error {
     color: red;
   }
-  
 }
 
 // login form
